@@ -233,6 +233,7 @@ class MainWindow(QMainWindow):
         self.file_system_view.setModel(self.file_system_model)
         self.file_system_view.setRootIndex(self.file_system_model.index(self.file_system_model.path_analytical_viz))
         self.file_system_view.setColumnWidth(0,300)
+        self.file_system_view.doubleClicked.connect(lambda:DataViz.load_model(self))
 
         self.file_system_view_for_data = self.Ui_MainWindow.treeViewData
         self.file_system_view_for_data.setModel(self.file_system_model_for_data)
@@ -241,6 +242,7 @@ class MainWindow(QMainWindow):
 
         self.file_system_view.clicked.connect(self.getFileContents)
         self.file_system_view_for_data.clicked.connect(self.getFileName)
+
 
     def pltFin(self):
         self.file_system_model = FileSystemModel()
